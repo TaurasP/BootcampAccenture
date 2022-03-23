@@ -1,1 +1,3 @@
-Completed Accenture bootcamp's tasks from day 1 and 2 with console menu and handled input exceptions.
+Completed Accenture bootcamp's tasks from 1 - 3 days with console menu and handled input exceptions.
+
+TO DO: handle main menu input exceptions.
