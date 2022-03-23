@@ -17,6 +17,7 @@ public class Bootcamp {
         System.out.println("\n*************** ACCENTURE BOOTCAMP ***************");
         System.out.println("1. DAY 1");
         System.out.println("2. DAY 2");
+        System.out.println("3. DAY 3");
         System.out.println("**************************************************");
         System.out.println("0. EXIT");
         System.out.println("**************************************************");
@@ -50,6 +51,29 @@ public class Bootcamp {
                 day2.task6();
                 break;
             default:
+                System.out.println("Error. Please enter a valid task option.");
+                break;
+        }
+    }
+
+    public void showDay3Task(int task) {
+        Day3 day3 = new Day3();
+
+        switch (task) {
+            case 1:
+                day3.task1();
+                break;
+            case 2:
+                day3.task2();
+                break;
+            case 3:
+                day3.task3();
+                break;
+            case 5:
+                day3.task5();
+                break;
+            default:
+                System.out.println("Error. Please enter a valid task option.");
                 break;
         }
     }
@@ -62,6 +86,19 @@ public class Bootcamp {
         System.out.println("4. TASK 4 (if entered number is odd - true, if even - false)");
         System.out.println("5. TASK 5 (show the opposite of entered boolean)");
         System.out.println("6. TASK 6 (if 2 entered numbers meets 1 of 3 conditions - true)");
+        System.out.println("**************************************************");
+        System.out.println("0. RETURN TO MAIN MENU");
+        System.out.println("**************************************************");
+    }
+
+    public void showDay3Menu() {
+        System.out.println("\n********************* DAY 3 **********************");
+        System.out.println("1. TASK 1");
+        System.out.println("2. TASK 2");
+        System.out.println("3. TASK 3");
+        System.out.println("5. TASK 5");
+        System.out.println("**************************************************");
+        System.out.println("0. RETURN TO MAIN MENU");
         System.out.println("**************************************************");
     }
 
@@ -77,6 +114,11 @@ public class Bootcamp {
                 // DAY 2
                 showDay2Menu();
                 selectFromDay2();
+                break;
+            case 3:
+                // DAY 3
+                showDay3Menu();
+                selectFromDay3();
                 break;
             case 0:
                 // EXIT
@@ -109,6 +151,32 @@ public class Bootcamp {
                 break;
             case 6:
                 showDay2Task(6);
+                break;
+            case 0:
+                break;
+            default:
+                System.out.println("Error. Please enter a valid task option.");
+                break;
+        }
+    }
+
+    public void selectFromDay3() {
+        System.out.println("Select a task: ");
+        int selection = scanner.nextInt();
+        switch (selection) {
+            case 1:
+                showDay3Task(1);
+                break;
+            case 2:
+                showDay3Task(2);
+                break;
+            case 3:
+                showDay3Task(3);
+                break;
+            case 5:
+                showDay3Task(5);
+                break;
+            case 0:
                 break;
             default:
                 System.out.println("Error. Please enter a valid task option.");
