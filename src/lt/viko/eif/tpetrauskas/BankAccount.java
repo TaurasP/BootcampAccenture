@@ -27,7 +27,7 @@ public class BankAccount {
     }
 
     public void printBalance() {
-        System.out.println("Your current balance is: " + getBalance());
+        System.out.println("Your current balance is: " + String.format("%.2f", getBalance()));
     }
 
     public void transferFrom(BankAccount otherBankAccount, double amount) {

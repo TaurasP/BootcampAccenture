@@ -93,10 +93,10 @@ public class Bootcamp {
 
     public void showDay3Menu() {
         System.out.println("\n********************* DAY 3 **********************");
-        System.out.println("1. TASK 1");
-        System.out.println("2. TASK 2");
-        System.out.println("3. TASK 3");
-        System.out.println("5. TASK 5");
+        System.out.println("1. TASK 1 (multiplication table)");
+        System.out.println("2. TASK 2 (copying 4 random numbers to an array)");
+        System.out.println("3. TASK 3 (BankAccount)");
+        System.out.println("5. TASK 5 (Vehicle)");
         System.out.println("**************************************************");
         System.out.println("0. RETURN TO MAIN MENU");
         System.out.println("**************************************************");

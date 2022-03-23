@@ -45,6 +45,7 @@ public class Day3 {
         bankAccount1.withdraw(2000.00);
         bankAccount2.deposit(10000);
         bankAccount1.transferFrom(bankAccount2, 10000);
+        bankAccount2.printBalance();
     }
 
     public void task5() {
