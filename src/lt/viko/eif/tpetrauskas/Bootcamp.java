@@ -18,6 +18,7 @@ public class Bootcamp {
         System.out.println("1. DAY 1");
         System.out.println("2. DAY 2");
         System.out.println("3. DAY 3");
+        System.out.println("4. DAY 4");
         System.out.println("**************************************************");
         System.out.println("0. EXIT");
         System.out.println("**************************************************");
@@ -78,6 +79,22 @@ public class Bootcamp {
         }
     }
 
+    public void showDay4Task(int task) {
+        Day4 day4 = new Day4();
+
+        switch (task) {
+            case 1:
+                day4.task1();
+                break;
+            case 2:
+                day4.task2();
+                break;
+            default:
+                System.out.println("Error. Please enter a valid task option.");
+                break;
+        }
+    }
+
     public void showDay2Menu() {
         System.out.println("\n********************* DAY 2 **********************");
         System.out.println("1. TASK 1 (2 entered numbers comparison)");
@@ -102,6 +119,15 @@ public class Bootcamp {
         System.out.println("**************************************************");
     }
 
+    public void showDay4Menu() {
+        System.out.println("\n********************* DAY 4 **********************");
+        System.out.println("1. TASK 1 (array, arrayList with colors)");
+        System.out.println("2. TASK 2 (Text)");
+        System.out.println("**************************************************");
+        System.out.println("0. RETURN TO MAIN MENU");
+        System.out.println("**************************************************");
+    }
+
     public void selectFromMainMenu() {
         System.out.println("Select from menu: ");
         int selection = scanner.nextInt();
@@ -120,6 +146,11 @@ public class Bootcamp {
                 showDay3Menu();
                 selectFromDay3();
                 break;
+            case 4:
+                // DAY 4
+                showDay4Menu();
+                selectFromDay4();
+                break;
             case 0:
                 // EXIT
                 exit = true;
@@ -128,6 +159,7 @@ public class Bootcamp {
                 System.out.println("Error. Please enter a valid day option.");
                 break;
         }
+
     }
 
     public void selectFromDay2() {
@@ -175,6 +207,24 @@ public class Bootcamp {
                 break;
             case 5:
                 showDay3Task(5);
+                break;
+            case 0:
+                break;
+            default:
+                System.out.println("Error. Please enter a valid task option.");
+                break;
+        }
+    }
+
+    public void selectFromDay4() {
+        System.out.println("Select a task: ");
+        int selection = scanner.nextInt();
+        switch (selection) {
+            case 1:
+                showDay4Task(1);
+                break;
+            case 2:
+                showDay4Task(2);
                 break;
             case 0:
                 break;
