@@ -1,7 +1,11 @@
 package lt.viko.eif.tpetrauskas;
 
-import java.io.File;
-import java.io.FilenameFilter;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Day4 {
@@ -380,6 +384,190 @@ public class Day4 {
         // Exercise 5
         System.out.println(file.isFile() ? file.getAbsolutePath() + " is a file." : file.getAbsolutePath() + " is a directory.");
         System.out.println(fileReadMe.isFile() ? fileReadMe.getAbsolutePath() + " is a file." : fileReadMe.getAbsolutePath() + " is a directory.");
+
+        // Exercise 6
+        String text1 = "Intellij IDEA Ultimate";
+        String text2 = "Intellij IDEA Ultimate";
+        String text3 = "Intellij IDEA Community";
+
+        System.out.println("\"" + text1 + "\"" + " and " + "\"" + text2 + "\"" + " comparison: " + text1.compareTo(text2));
+        System.out.println("\"" + text1 + "\"" + " and " + "\"" + text3 + "\"" + " comparison: " + text1.compareTo(text3));
+
+        // Exercise 7
+        String pattern = "yyyy-MM-dd HH:mm:ss";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String dateLastModified = simpleDateFormat.format(new Date(file.lastModified()));
+        System.out.println("File was last modified at: " + dateLastModified);
+
+        // Exercise 8
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please enter your name: ");
+        String name = input.nextLine();
+        System.out.println("Nice to meet you " + name + "!");
+
+        // Exercise 9
+        System.out.println(file.exists() ? "File " + "\"" + file.getName() + "\"" + " size: "
+                + (double) file.length() + " b / " + (double) file.length()/1024 + " kb / "
+                + (double) file.length()/(1024*1024) + " mb" : "File does not exist.");
+
+        // Exercise 10
+        Path path = Paths.get("/Users/tauras/Documents/Projects/Java/BootcampAccenture/README.md");
+        byte[] data = {};
+        try {
+            data = Files.readAllBytes(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.print("File to byte array: ");
+        for(byte b : data) {
+            System.out.print(b + " ");
+        }
+        System.out.println();
+
+        // Exercise 11
+        try {
+            Scanner scanner = new Scanner(new File("/Users/tauras/Documents/Projects/Java/BootcampAccenture/README.md"));
+            while (scanner.hasNextLine()) {
+                System.out.println(scanner.nextLine());
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        // Exercise 12
+        try {
+            Scanner s = new Scanner(new File("/Users/tauras/Documents/Projects/Java/BootcampAccenture/.gitignore"));
+            // used \\Z as delimiter
+            s.useDelimiter("\\Z");
+            System.out.println(s.next());
+            s.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println();
+
+        // Exercise 13
+        File newFile = new File("/Users/tauras/Documents/Projects/Java/BootcampAccenture/test.txt");
+        try {
+            BufferedReader my_Reader = new BufferedReader(new FileReader(newFile));
+            String line = "";
+            StringBuilder str = new StringBuilder();
+            while((line = my_Reader.readLine()) != null)
+            {
+                str.append(line);
+            }
+            System.out.println("Text from file " + "\"" + newFile.getName() + "\"" + " saved in a String: " + str);
+            my_Reader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not exists or insufficient rights");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("An exception occurred while reading the file");
+            e.printStackTrace();
+        }
+
+        // Exercise 14
+        StringBuilder stringBuilder = new StringBuilder();
+        String strLine = "";
+        List<String> list = new ArrayList<>();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(newFile));
+            while (strLine != null)
+            {
+                strLine = br.readLine();
+                stringBuilder.append(strLine);
+                stringBuilder.append(System.lineSeparator());
+                strLine = br.readLine();
+                if (strLine==null)
+                    break;
+                list.add(strLine);
+            }
+            System.out.print("Text from file " + "\"" + newFile.getName() + "\"" + " saved in an array: ");
+            System.out.print(Arrays.toString(list.toArray()));
+            br.close();
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found");
+        } catch (IOException e) {
+            System.err.println("Unable to read the file.");
+        }
+        System.out.println();
+
+        // Exercise 15
+        // Write to file
+        try {
+            PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(newFile)));
+            for (int i=0; i<=10; i++) {
+                out.print(i + " ");
+            }      out.close();
+        } catch (IOException except) {
+            except.printStackTrace();
+        }
+
+        // Read from file
+        readFromFile(newFile, "Reading from a file: ");
+
+        // Exercise 16
+        String newFilePath = newFile.getPath();
+        String text = "\nAdded new text to a file.";
+
+        try {
+            Files.write(Paths.get(newFilePath), text.getBytes(), StandardOpenOption.APPEND);
+        } catch (IOException e) {
+        }
+
+        // Read from file
+        readFromFile(newFile, "Reading from a file after new text was added: ");
+
+        // Exercise 17
+        System.out.println("First 3 lines of file " + fileReadMe + ": ");
+        int lineCounter = 0;
+        try {
+            Scanner scanner = new Scanner(fileReadMe);
+            while (scanner.hasNextLine()) {
+                if(lineCounter == 3) {
+                    scanner.close();
+                    break;
+                }
+                System.out.println(scanner.nextLine());
+                lineCounter++;
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        // Exercise 18
+        String longestWord = "";
+        String currentWord;
+        Scanner sc = null;
+        try {
+            sc = new Scanner(new File(fileReadMe.getAbsolutePath()));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        while (sc.hasNext()) {
+            currentWord = sc.next();
+            if (currentWord.length() > longestWord.length()) {
+                longestWord = currentWord;
+            }
+
+        }
+        System.out.println("The longest word in file \"" + fileReadMe.getName() + "\": " + longestWord);
     }
 
+    public void readFromFile(File file, String text) {
+        System.out.println(text);
+        try {
+            Scanner newScanner = new Scanner(file);
+            newScanner.useDelimiter("\\Z");
+            System.out.println(newScanner.next());
+            newScanner.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println();
+    }
 }
