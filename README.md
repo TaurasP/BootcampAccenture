@@ -1,7 +1,6 @@
 ## Completed Accenture bootcamp's tasks from 1 - 4 days with console menu.
 
-TO DO: 
+TO DO LIST: 
 - handle main menu input exceptions
 - add tests
-- comments
-- gitIgnore file
+- add comments
