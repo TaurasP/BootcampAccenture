@@ -89,6 +89,12 @@ public class Bootcamp {
             case 2:
                 day4.task2();
                 break;
+            case 3:
+                day4.task3();
+                break;
+            case 4:
+                day4.task4();
+                break;
             default:
                 System.out.println("Error. Please enter a valid task option.");
                 break;
@@ -123,6 +129,8 @@ public class Bootcamp {
         System.out.println("\n********************* DAY 4 **********************");
         System.out.println("1. TASK 1 (array, arrayList with colors)");
         System.out.println("2. TASK 2 (Text)");
+        System.out.println("3. TASK 3 (Collection exercises)");
+        System.out.println("4. TASK 4 (I/O exercises)");
         System.out.println("**************************************************");
         System.out.println("0. RETURN TO MAIN MENU");
         System.out.println("**************************************************");
@@ -225,6 +233,12 @@ public class Bootcamp {
                 break;
             case 2:
                 showDay4Task(2);
+                break;
+            case 3:
+                showDay4Task(3);
+                break;
+            case 4:
+                showDay4Task(4);
                 break;
             case 0:
                 break;
